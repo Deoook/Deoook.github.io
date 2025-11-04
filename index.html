@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans KR', Arial, sans-serif;
+            line-height: 1.6;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            width: 30%;
+            background: transparent; /* 배경 없음 */
+            color: #1e4d7b;          /* 텍스트 색상을 진하게 */
+            padding: 0;
+            position: relative;
+            border-right: 2px solid #1e4d7b;
+        }
+        
+        .profile-section {
+            padding: 20px 60px 0px 20px;
+        }
+
+        .contact-text a {
+            color: #1e4d7b;           /* 글씨 색상 */
+            text-decoration: none;  /* 밑줄 제거 */
+            font-weight: normal;    /* 필요하면 글씨 두께 조절 */
+        }
+
+        .contact-text a:hover {
+            text-decoration: underline; /* 마우스 오버 시 밑줄 */
+            color: #a0d8f1;            /* 마우스 오버 시 색상 변경 가능 */
+        }
+        
+        .profile-img {
+            width: 100%;
+            max-width: 300px;
+            height: 250px;
+            border-radius: 0;
+            background: linear-gradient(135deg, #667eea 0%, #ffffff 100%);
+            margin: 0 auto 20px auto;
+            display: block;
+            object-fit: cover;
+            border: 5px solid rgba(255,255,255,0.2);
+            box-sizing: border-box;
+        }
+        
+        .sidebar-content {
+            padding: 0 40px 20px 40px;
+        }
+        
+        .sidebar h2 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+        
+        .contact-icon {
+            width: 30px;
+            height: 30px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .sidebar-content h2 {
+            font-size: 20px; /* 제목 크기 */
+            font-weight: 700;
+            margin-bottom: 1px;
+        }
+
+        .career-item {
+            margin-bottom: 12px;
+        }
+
+        .career-name {
+            font-size: 14px; /* 회사 이름 */
+            font-weight: 600;
+        }
+
+        .career-duration {
+            font-size: 10px; /* 근무 기간 */
+        }
+
+        .career-role {
+            font-size: 14px; /* 담당 역할 */
+        }
+
+        .contact-text h4 {
+            font-size: 0.85em;
+            margin-bottom: 3px;
+            opacity: 0.8;
+            font-weight: 500;
+        }
+        
+        .contact-text e {
+            font-size: 0.65em;
+            line-height: 1.0;
+        }
+
+        .contact-text p {
+            font-size: 0.95em;
+            line-height: 1.4;
+        }
+        
+        .skill-item {
+            margin-bottom: 18px;
+        }
+        
+        .skill-name {
+            font-size: 0.95em;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        
+        .skill-bar {
+            height: 8px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+
+        .skill-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%);
+            border-radius: 10px;
+
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        
+        .language-item {
+            margin-bottom: 15px;
+        }
+        
+        /* 오른쪽 메인 컨텐츠 */
+        .main-content {
+            width: 65%;
+            padding: 60px 50px;
+        }
+        
+        
+        .header h1 {
+            font-size: 3em;
+            color: #1a202c;
+            margin-bottom: 5px;
+            font-weight: 300;
+            letter-spacing: -1px;
+        }
+        
+        .header .surname {
+            margin: 0, 0, 0, 0;
+            font-size: 3;
+            color: #3b82f6;
+            font-weight: 1000;
+            display: block;
+            padding: 0 20px 0px 40px;
+        }
+        
+        .job-title {
+            font-size: 1;
+            color: #4a5568;
+            margin-top: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+        
+        .section {
+            margin-bottom: 45px;
+        }
+        
+        .section-title {
+            display: inline-block;
+            background: #1e4d7b;
+            color: white;
+            padding: 12px 25px;
+            font-size: 1.0em;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+        
+        .section-content {
+            color: #4a5568;
+            line-height: 1.8;
+            font-size: 0.95em;
+        }
+        
+        .timeline-item {
+            background-color: #e8f4fd; /* 밝은 하늘색 배경 */
+            border-radius: 12px;       /* 모서리 둥글게 */
+            padding: 16px 20px;        /* 안쪽 여백 */
+            margin-bottom: 20px;       /* 아래쪽 간격 */
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* 부드러운 그림자 */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .timeline-date {
+            min-width: 100px;
+            font-weight: 600;
+            color: #2d3748;
+            font-size: 1em;
+        }
+        
+        .timeline-item {
+            display: block; /* flex 대신 block으로 */
+        }
+
+        .timeline-content {
+            display: block;
+        }
+
+        .timeline-item h3 {
+            color: #1e4d7b;
+            font-size: 1.3em;
+            margin-bottom: 0px;
+            padding-bottom: 10px;
+            font-weight: 800;
+            display: block;
+        }
+
+        .timeline-item e {
+            color: #1e4d7b;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+            padding-bottom: 10px;
+            font-weight: 700;
+            display: block;
+        }
+
+        .timeline-content p {
+            color: #4a5568;
+            line-height: 1.7;
+            display: block; /* 세로 배치 명시 */
+            margin: 0; /* 필요시 여백 조정 */
+        }
+        
+        .project-details ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .project-details li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 8px;
+            line-height: 1.6;
+            color: #4a5568;
+            font-size: 0.95em;
+        }
+
+        .project-details li::before {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: 0.7em;
+            width: 5px;
+            height: 5px;
+            background-color: #1e4d7b; /* 포인트 컬러 */
+            border-radius: 50%;
+        }
+
+        .emoji-link {
+            text-decoration: none;  /* 밑줄 제거 */
+            color: inherit;         /* 글자색을 부모 요소 색상과 동일하게 */
+            margin-left: 8px;
+            font-size: 1.1em;
+            transition: transform 0.2s ease;
+        }
+
+        .emoji-link:hover {
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar, .main-content {
+                width: 100%;
+            }
+        }
+
+        @media print {
+        * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 왼쪽 사이드바 -->
+        <div class="sidebar">
+            
+            
+            <div class="profile-section">
+                <img class="profile-img" src="asset/image.jpg" alt="프로필 사진">
+            </div>
+            
+            <div class="header">
+                <h1> <span class="surname">최현덕</span></h1>
+            </div>
+
+            <div class="sidebar-content">
+                <h2>info</h2>
+                <div class="contact-item">
+                    <div class="contact-icon">🎂</div>
+                    <div class="contact-text">
+                        <h4>Birth</h4>
+                        <p>2000.04.04</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-text">
+                        <h4>Phone</h4>
+                        <p>+82 010-2060-5642</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-text">
+                        <h4>Email</h4>
+                        <p>gusejr5642@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">🌐</div>
+                    <div class="contact-text">
+                        <h4>Website</h4>
+                        <p><a href="https://github.com/deoook" target="_blank">https://github.com/deoook</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-content">
+                <h2>experience</h2>
+                <div class="skill-item">
+                    <div class="contact-text">
+                        <h4>2024.10 ~</h4>
+                        <p>(주)하이브비젼 시스템 개발 2팀</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-content">
+                <h2>education</h2>
+                <div class="skill-item">
+                    <div class="contact-text">
+                        <h4>2019.03 ~ 2025.02</h4>
+                        <p>대진대학교 전자공학과 졸업</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-content">
+                <h2>certificate</h2>
+                <div class="skill-item">
+                    <div class="contact-text">
+                        <h4>2025</h4>
+                        <p>TOEIC Speaking IM3</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-content">
+                <h2>SKILL</h2>
+                <div class="skill-item">
+                    <div class="skill-name">C#</div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 80%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">C++</div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 65%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">C</div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 50%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">Python</div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 40%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 오른쪽 메인 컨텐츠 -->
+        <div class="main-content">
+            
+            <div class="section">
+                <div class="section-title">About Me</div>
+                <div class="section-content">
+                    <p>
+                        머신비전 솔루션 기업에서 C# 기반 시스템 개발자로 근무하며, 
+                        카메라, 조명 등 하드웨어 제어부터 이미지 획득, 전처리, AI 모델 연동, 
+                        결과 출력까지 전 과정을 직접 설계하고 구현해왔습니다.
+                    </p>
+                    <br>
+                    <p>
+                        정밀한 조명 제어로 순간적으로 최적의 조도를 확보하고, 
+                        동기화된 카메라를 통해 이미지를 획득한 후 이를 전처리하여 AI 모델에 입력하고 
+                        결과를 출력하는 일련의 과정. 이 모든 기술적 흐름이 사람들의 삶을 
+                        보다 안전하고 편리하게 만드는 데 기여한다는 점에서 큰 보람을 느낍니다.
+                    </p>
+                    <br>
+                    <p>
+                        하드웨어와 소프트웨어의 경계를 넘나들며 시스템을 설계하고 구현하는 과정이 
+                        저에게는 매우 매력적인 일입니다. 앞으로도 기술로 실질적인 가치를 만들어내는 
+                        개발자로 성장하고 싶습니다.
+                    </p>
+            </div>
+            <br>
+           
+            <div class="section">
+                <div class="section-title">Company Projects ( Code Not Available )</div>
+                <div class="timeline-item">
+                    <h3>
+                        CosmeticAOI
+                        <a href="https://github.com/Deoook/CosmeticAOI" target="_blank" class="emoji-link">🔗</a>
+                    </h3>
+                    <e>
+                        휴대폰 케이스의 외관을 검사하여 표면 스크래치, 찍힘 등 Cosmetic Defect 유무를 판단하는 AOI 프로그램
+                    </e>
+                    <div class="project-details">
+                        <ul>
+                            <li>영상 데이터 처리 및 외관 검사 수행 후 결과 실시간 시각화 기능 개발</li>
+                            <li>검사 정확도 향상을 위한 기준점 설정 기능 개발 (Calibration)</li>
+                            <li>포지션 별로 조명 값을 달리 적용할 수 있도록 시리얼 통신(RS232) 기반 스트로브 제어 기능 개발</li>
+                            <li>MS-SQL 이용 검사 결과 저장 및 REPORT, DASHBOARD 기능 개발</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>
+                        Multi-Camera Focus Control
+                        <a href="https://github.com/Deoook/MultiCamFocusController" target="_blank" class="emoji-link">🔗</a>
+                    </h3>
+                    <e>
+                        3채널 카메라 영상 Grab 및 시리얼 통신 기반 버튼 입력으로 각 카메라의 렌즈 포커스를 제어하는 프로그램
+                    </e>
+                    <div class="project-details">
+                        <ul>
+                            <li>3채널 카메라 영상 출력 기능 구현</li>
+                            <li>SerialPort 기반 버튼 입력 및 포커스 제어 로직 구현</li>
+                            <li>프로젝트 구조 설계 및 파일 입출력 기능 구현</li>
+                            <li>지정 경로 / 이름 기반 이미지 자동 저장 기능 개발</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>
+                        Multi-Channel Barcode Reader
+                        <a href="https://github.com/Deoook/MultiChannelBarcodeReader" target="_blank" class="emoji-link">🔗</a>
+                    </h3>
+                    <e>
+                        6면 검사 기준 최대 12채널까지 지원하는 멀티 바코드 리더기 프로그램
+                    </e>
+                    <div class="project-details">
+                        <ul>
+                            <li>최대 12채널 바코드 스캐너 동시 운영 (멀티 스레드 처리)</li>
+                            <li>스캔 결과의 예외 캡처 및 상세 로그 기록</li>
+                            <li>프로그램 종료 시 디코딩 데이터 CSV 파일 자동 저장</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="section">
+                <div class="section-title">Study Projects ( Code Available )</div>
+                <div class="timeline-item">
+                    <h3>
+                        Doosan Robotics Arm Control
+                        <a href="https://github.com/Deoook/PracticeDoosan" target="_blank" class="emoji-link">🔗</a>
+                    </h3>
+                    <e>
+                        두산 로봇 팔 제어 프로그램
+                    </e>
+                    <div class="project-details">
+                        <ul>
+                            <li>Servo On/Off 제어</li>
+                            <li>Stop 버튼, Jog 버튼 등 로봇 동작 제어</li>
+                            <li>버튼 클릭 시 Ripple 이펙트 적용</li>
+                            <li>MVVM 패턴 기반 Command 바인딩</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>
+                        PatternMatchingTool ( In Progress )
+                        <a href="https://github.com/Deoook/PatternMatchingTool" target="_blank" class="emoji-link">🔗</a>
+                    </h3>
+                    <e>
+                        WPF 기반의 이미지 패턴 매칭 프로그램
+                    </e>
+                    <div class="project-details">
+                        <ul>
+                            <li>템플릿 매칭 기능</li>
+                            <li>특징점 기반 매칭 (SIFT)</li>
+                            <li>Rectangle 및 Corner Ellipse를 통한 GUI 패턴 편집</li>
+                            <li>OCR Predict 정보 및 바코드 정보 관리</li>
+                            <li>TCP/IP 통신 기능으로 외부 시스템과 연동 가능</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>
+                        Autonomous Drone with YOLOv8
+                        <a href="https://github.com/Deoook/Object-Detection-Autonomous-Drone" target="_blank" class="emoji-link">🔗</a>
+                    </h3>
+                    <e>
+                        YOLOv8 모델을 이용하여 사람을 인식하고, 인식된 방향으로 자율 주행하는 드론 시스템
+                    </e>
+                    <div class="project-details">
+                        <ul>
+                            <li>YOLOv8을 이용한 실시간 사람 인식 및 추적 </li>
+                            <li>인식된 객체 방향으로 자율 이동 및 정지 수행  </li>
+                            <li>안드로이드 앱을 통한 드론 호출 및 착륙, 영상 녹화 기능 </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
